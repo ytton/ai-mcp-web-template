@@ -1,0 +1,111 @@
+# 项目开发规范
+
+## 技术栈
+- React 19 + TypeScript
+- TailwindCSS v3 用于样式
+- shadcn/ui 组件库
+- @tanstack/react-router 文件路由系统
+- Zustand 状态管理
+- Axios 网络请求
+- Iconify 图标系统 (优先使用 Figma 提供的 SVG)
+
+## 代码规范
+
+### React 组件
+- 使用函数组件，不使用类组件
+- 组件定义方式：
+```tsx
+import { memo } from "react";
+
+interface Props {
+  title: string;
+}
+
+function ComponentName({ title }: Props) {
+  return <div>{title}</div>;
+}
+
+export default memo(ComponentName);
+```
+
+### 优化原则
+- 不要过度优化，只在明确需要时使用 useCallback
+- 只有在将方法传递给 memo 组件时才使用 useCallback 包装
+
+### 文件组织
+- components/ui/ - UI 基础组件
+- components/ - 业务组件
+- stores/ - Zustand 状态管理
+- api/ - API 请求模块
+- utils/ - 工具函数
+- hooks/ - 自定义 Hooks
+- types/ - 类型定义
+- constants/ - 常量定义
+
+### 样式规范
+- 使用 TailwindCSS 类名
+- 使用 CSS 变量进行主题定制
+- 组件样式使用 cn() 函数合并类名
+
+### 图标使用
+- 优先使用 Figma 提供的 SVG 图标
+- 其次使用 Iconify 图标系统
+- 通过 Icon 组件包装使用
+
+### API 请求
+- 使用 utils/request.ts 封装的 axios 实例
+- API 方法定义在 api/ 目录下
+- 使用 TypeScript 接口定义请求和响应类型
+
+### 路由系统
+- 使用 @tanstack/react-router 文件路由
+- 路由文件放在 routes/ 目录下
+
+### 状态管理
+- 使用 Zustand 进行状态管理
+- Store 文件放在 stores/ 目录下
+
+## Figma 设计实现规范
+
+### 代码生成原则
+- 项目基于 Figma MCP 生成页面，应根据 Figma 链接一次性生成合理的代码
+- 严格按照设计图实现，确保高度还原
+
+### Layout 使用规范
+- **优先使用项目现有的 Layout 组件**，包含 Header 和 Footer
+- 实现 Figma 页面时，**忽略设计图中的 Header 和 Footer 部分**
+- 只实现页面的主要内容区域（content slot 部分）
+- **除非用户明确要求调整 Layout**，否则不要修改 Header/Footer 组件
+- 页面内容使用 `h-full` 类名可实现满屏效果
+
+### TailwindCSS 使用约束
+- **禁止使用 [] 语法**，如 `w-[11px]`、`text-[14px]` 等
+- 优先考虑调整 `tailwind.config.js` 配置来满足需求
+- 或添加 TailwindCSS 辅助类来实现
+- 间距和尺寸以 TailwindCSS 4px 为 1 的方式处理
+  - 设计图 11px → 使用 `pt-3` (12px)
+  - 设计图 18px → 使用 `pt-4` (16px) 或 `pt-5` (20px)
+- 只有在 TailwindCSS 内置方案和配置文件都无法满足时才考虑 [] 语法
+
+### 图表实现
+- 使用 `@visactor/react-vchart` 库实现所有图表
+- 支持各种图表类型：line、bar、pie、area 等
+
+## 数据处理规范
+
+### 严格禁止项
+- **禁止使用任何假数据、模拟数据、hardcoded 数据**
+- **禁止使用 setTimeout 模拟异步操作**
+- **禁止直接使用 axios**
+
+### 数据获取要求
+- 所有数据必须来自真实 API 调用
+- 使用项目封装的 `api` 工具，不直接使用 axios
+- 所有 API 调用必须有错误处理和 loading 状态
+- API 数据可以通过 Mock.js 模拟
+
+### API 规范
+- 采用 RESTful 风格
+- 统一返回结构：`{code: number, msg: string, data: any}`
+- API URL 按业务逻辑合理命名
+- 所有接口都要有对应的 TypeScript 类型定义

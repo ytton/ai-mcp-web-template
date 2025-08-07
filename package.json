@@ -1,0 +1,71 @@
+{
+  "name": "ai-mcp-web-template",
+  "version": "1.0.0",
+  "description": "A modern React web application template integrated with AI MCP (Model Context Protocol) for rapid development",
+  "type": "module",
+  "keywords": [
+    "react",
+    "typescript",
+    "tailwindcss",
+    "vite",
+    "mcp",
+    "ai",
+    "template",
+    "shadcn-ui",
+    "tanstack-router",
+    "zustand",
+    "desktop-app"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/ai-mcp-web-template.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/ai-mcp-web-template/issues"
+  },
+  "homepage": "https://github.com/yourusername/ai-mcp-web-template#readme",
+  "scripts": {
+    "dev": "vite --port 3000",
+    "start": "vite --port 3000",
+    "build": "vite build && tsc",
+    "serve": "vite preview",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@iconify/json": "^2.2.366",
+    "@iconify/react": "^6.0.0",
+    "@radix-ui/react-slot": "^1.2.3",
+    "@tanstack/react-router": "^1.130.2",
+    "@tanstack/react-router-devtools": "^1.130.2",
+    "@tanstack/router-plugin": "^1.121.2",
+    "@visactor/react-vchart": "^2.0.1",
+    "axios": "^1.11.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.536.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwind-merge": "^3.3.1",
+    "zustand": "^5.0.7"
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.16",
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/react": "^16.2.0",
+    "@types/mockjs": "^1.0.10",
+    "@types/react": "^19.0.8",
+    "@types/react-dom": "^19.0.3",
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.21",
+    "jsdom": "^26.0.0",
+    "mockjs": "^1.1.0",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.7.2",
+    "vite": "^6.3.5",
+    "vitest": "^3.0.5",
+    "web-vitals": "^4.2.4"
+  }
+}
