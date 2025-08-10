@@ -88,7 +88,7 @@ export default memo(ComponentName);
 - 只有在 TailwindCSS 内置方案和配置文件都无法满足时才考虑 [] 语法
 
 ### 图表实现
-- 使用 `@visactor/react-vchart` 库实现所有图表
+- 使用 `echarts` 和 `echarts-for-react` 库实现所有图表
 - 支持各种图表类型：line、bar、pie、area 等
 
 ## 数据处理规范

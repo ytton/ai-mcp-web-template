@@ -180,7 +180,7 @@ function TestMockData() {
 
       {/* 图表展示 */}
       <div className="space-y-4">
-        <h2 className="text-xl font-semibold">数据图表 (VChart)</h2>
+        <h2 className="text-xl font-semibold">数据图表 (ECharts)</h2>
         <div className="bg-white border rounded-lg p-4">
           <LineChart className="h-80" />
         </div>
@@ -215,7 +215,7 @@ function TestMockData() {
             </div>
             <div className="flex items-center gap-2">
               <Icon icon="lucide:check-circle" className="text-green-500" size={16} />
-              <span><strong>图表可视化:</strong> VChart 图表库</span>
+              <span><strong>图表可视化:</strong> ECharts 图表库</span>
             </div>
             <div className="flex items-center gap-2">
               <Icon icon="lucide:check-circle" className="text-green-500" size={16} />

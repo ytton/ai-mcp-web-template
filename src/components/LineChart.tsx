@@ -1,5 +1,5 @@
 import { memo, useEffect, useState } from 'react';
-import { VChart } from '@visactor/react-vchart';
+import ReactECharts from 'echarts-for-react';
 import { chartApi, type ChartDataPoint } from '@/api/chart';
 
 interface LineChartProps {
@@ -28,27 +28,60 @@ function LineChart({ className }: LineChartProps) {
     fetchData();
   }, []);
 
-  const spec = {
-    type: 'line' as const,
-    data: {
-      values: data
+  const option = {
+    tooltip: {
+      trigger: 'axis'
     },
-    xField: 'month',
-    yField: 'value',
-    point: {
-      visible: true
+    grid: {
+      left: '3%',
+      right: '4%',
+      bottom: '3%',
+      containLabel: true
     },
-    axes: [
+    xAxis: {
+      type: 'category',
+      boundaryGap: false,
+      data: data.map(item => item.month)
+    },
+    yAxis: {
+      type: 'value'
+    },
+    series: [
       {
-        orient: 'bottom' as const,
-        type: 'band' as const
-      },
-      {
-        orient: 'left' as const,
-        type: 'linear' as const
+        name: '数值',
+        type: 'line',
+        data: data.map(item => item.value),
+        smooth: true,
+        symbol: 'circle',
+        symbolSize: 6,
+        itemStyle: {
+          color: '#3b82f6'
+        },
+        lineStyle: {
+          color: '#3b82f6',
+          width: 2
+        },
+        areaStyle: {
+          color: {
+            type: 'linear',
+            x: 0,
+            y: 0,
+            x2: 0,
+            y2: 1,
+            colorStops: [
+              {
+                offset: 0,
+                color: 'rgba(59, 130, 246, 0.3)'
+              },
+              {
+                offset: 1,
+                color: 'rgba(59, 130, 246, 0.05)'
+              }
+            ]
+          }
+        }
       }
-    ],
-    color: ['#3b82f6']
+    ]
   };
 
   if (loading) {
@@ -69,7 +102,11 @@ function LineChart({ className }: LineChartProps) {
 
   return (
     <div className={className}>
-      <VChart spec={spec} options={{ theme: 'light' }} />
+      <ReactECharts 
+        option={option} 
+        style={{ height: '100%', width: '100%' }}
+        opts={{ renderer: 'canvas' }}
+      />
     </div>
   );
 }

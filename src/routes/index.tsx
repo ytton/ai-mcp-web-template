@@ -85,7 +85,7 @@ function HomePage() {
       <div className="bg-card p-6 rounded-lg border">
         <h2 className="text-2xl font-semibold mb-4 flex items-center gap-2">
           <Icon icon="lucide:bar-chart-3" size={24} />
-          图表展示 (VChart)
+          图表展示 (ECharts)
         </h2>
         <div className="h-80">
           <LineChart className="w-full h-full" />

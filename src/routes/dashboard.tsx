@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { VChart } from "@visactor/react-vchart";
+import ReactECharts from "echarts-for-react";
 import {
   dashboardApi,
   type DashboardStats,
@@ -48,28 +48,63 @@ function DashboardPage() {
   }, [chartPeriod]);
 
   // 图表配置
-  const chartSpec = {
-    type: "line" as const,
-    data: {
-      values: chartData,
+  const chartOption = {
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {
+        type: 'cross'
+      }
     },
-    xField: "date",
-    yField: ["users", "orders"],
-    seriesField: "type",
-    axes: [
+    legend: {
+      data: ['用户数', '订单数'],
+      top: 10
+    },
+    grid: {
+      left: '3%',
+      right: '4%',
+      bottom: '3%',
+      containLabel: true
+    },
+    xAxis: {
+      type: 'category',
+      boundaryGap: false,
+      data: chartData.map(item => item.date)
+    },
+    yAxis: {
+      type: 'value'
+    },
+    series: [
       {
-        orient: "bottom" as const,
-        type: "band" as const,
+        name: '用户数',
+        type: 'line',
+        data: chartData.map(item => item.users),
+        smooth: true,
+        symbol: 'circle',
+        symbolSize: 6,
+        itemStyle: {
+          color: '#3b82f6'
+        },
+        lineStyle: {
+          color: '#3b82f6',
+          width: 2
+        }
       },
       {
-        orient: "left" as const,
-        type: "linear" as const,
-      },
-    ],
-    legends: {
-      visible: true,
-      orient: "top" as const,
-    },
+        name: '订单数',
+        type: 'line',
+        data: chartData.map(item => item.orders),
+        smooth: true,
+        symbol: 'circle',
+        symbolSize: 6,
+        itemStyle: {
+          color: '#10b981'
+        },
+        lineStyle: {
+          color: '#10b981',
+          width: 2
+        }
+      }
+    ]
   };
 
   // 获取状态图标和颜色
@@ -227,7 +262,11 @@ function DashboardPage() {
             </div>
           </div>
           <div className="h-80">
-            <VChart spec={chartSpec} options={{ theme: "light" }} />
+            <ReactECharts 
+              option={chartOption} 
+              style={{ height: '100%', width: '100%' }}
+              opts={{ renderer: 'canvas' }}
+            />
           </div>
         </div>
 

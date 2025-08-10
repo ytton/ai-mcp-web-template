@@ -14,7 +14,7 @@ AI MCP Web Template is a modern, production-ready React web application template
 - **⚛️ Modern React**: React 19 with TypeScript for type-safe development
 - **🎨 Beautiful UI**: TailwindCSS v3 + shadcn/ui component library
 - **🛣️ File-based Routing**: TanStack Router with automatic code splitting
-- **📊 Data Visualization**: Integrated VChart for comprehensive charting capabilities
+- **📊 Data Visualization**: Integrated ECharts for comprehensive charting capabilities
 - **🔄 State Management**: Zustand for lightweight, scalable state management
 - **🌐 HTTP Client**: Axios with request/response interceptors and error handling
 - **🎭 Mock Data**: Built-in Mock.js integration for development
@@ -28,7 +28,7 @@ AI MCP Web Template is a modern, production-ready React web application template
 - **Routing**: TanStack Router (file-based)
 - **State Management**: Zustand
 - **HTTP Client**: Axios
-- **Charts**: @visactor/react-vchart
+- **Charts**: echarts + echarts-for-react
 - **Icons**: Iconify + Lucide React
 - **Build Tool**: Vite
 - **Testing**: Vitest + Testing Library
@@ -113,7 +113,7 @@ await updateUser(userId, userData);
 
 ### 📊 Charts & Visualization
 
-Built-in chart components using VChart:
+Built-in chart components using ECharts:
 
 ```typescript
 import { LineChart } from '@/components/LineChart';
@@ -213,7 +213,7 @@ AI MCP Web Template 是一个现代化的、生产就绪的 React Web 应用模�
 - **⚛️ 现代 React**: React 19 + TypeScript 类型安全开发
 - **🎨 精美 UI**: TailwindCSS v3 + shadcn/ui 组件库
 - **🛣️ 文件路由**: TanStack Router 自动代码分割
-- **📊 数据可视化**: 集成 VChart 图表库
+- **📊 数据可视化**: 集成 ECharts 图表库
 - **🔄 状态管理**: Zustand 轻量级状态管理
 - **🌐 HTTP 客户端**: Axios 请求拦截和错误处理
 - **🎭 模拟数据**: 内置 Mock.js 开发支持
@@ -227,7 +227,7 @@ AI MCP Web Template 是一个现代化的、生产就绪的 React Web 应用模�
 - **路由系统**: TanStack Router (文件路由)
 - **状态管理**: Zustand
 - **HTTP 客户端**: Axios
-- **图表库**: @visactor/react-vchart
+- **图表库**: echarts + echarts-for-react
 - **图标系统**: Iconify + Lucide React
 - **构建工具**: Vite
 - **测试框架**: Vitest + Testing Library
@@ -312,7 +312,7 @@ await updateUser(userId, userData);
 
 ### 📊 图表可视化
 
-使用 VChart 的内置图表组件：
+使用 ECharts 的内置图表组件：
 
 ```typescript
 import { LineChart } from '@/components/LineChart';
